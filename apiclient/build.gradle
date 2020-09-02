@@ -1,18 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.jmvincenti.myuserdirectory"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -22,7 +21,7 @@ android {
 
         debugProguard {
             initWith buildTypes.debug
-            proguardFile getDefaultProguardFile('proguard-android.txt')
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFile 'config.pro'
             minifyEnabled true
         }
@@ -30,15 +29,13 @@ android {
 }
 
 dependencies {
-    implementation project(':apiclient')
-
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlin"
-    implementation "androidx.core:core-ktx:$rootProject.androidx.core"
-    implementation "androidx.appcompat:appcompat:$rootProject.androidx.appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.androidx.constraintlayout"
-    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidx.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidx.lifecycle"
+
+    //api
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
