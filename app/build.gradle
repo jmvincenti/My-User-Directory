@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -27,6 +29,11 @@ android {
             minifyEnabled true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -34,12 +41,20 @@ dependencies {
     implementation project(':database')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlin"
+
+    //UI
     implementation "androidx.core:core-ktx:$rootProject.androidx.core"
     implementation "androidx.appcompat:appcompat:$rootProject.androidx.appcompat"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.androidx.constraintlayout"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidx.lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidx.lifecycle"
+
+    // Di
+    implementation "com.google.dagger:hilt-android:$rootProject.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hilt"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
