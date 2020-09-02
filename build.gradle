@@ -10,14 +10,19 @@ buildscript {
 
         //dependencies
         kotlin = '1.3.72'
+        // ui
         androidx = [
                 core            : "1.3.1",
                 appcompat       : "1.2.0",
                 constraintlayout: "2.0.1",
                 lifecycle       : "2.2.0"
         ]
+        // api
         retrofit = '2.9.0'
         moshi = '1.9.3'
+
+        // database
+        sqldelight = '1.4.2'
     }
     repositories {
         google()
@@ -26,6 +31,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$androidPluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin"
+        classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
