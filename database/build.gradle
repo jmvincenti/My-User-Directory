@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -33,6 +34,10 @@ dependencies {
 
     // database
     implementation "com.squareup.sqldelight:android-driver:$rootProject.sqldelight"
+
+    // serialisation
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
