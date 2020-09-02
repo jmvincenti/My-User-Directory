@@ -34,6 +34,7 @@ dependencies {
 
     //api
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
 
