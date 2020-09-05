@@ -10,16 +10,21 @@ buildscript {
 
         //dependencies
         kotlin = '1.3.72'
+        coroutines = '1.3.7'
         // ui
         androidx = [
                 core            : "1.3.1",
                 appcompat       : "1.2.0",
                 constraintlayout: "2.0.1",
-                lifecycle       : "2.2.0"
+                lifecycle       : "2.2.0",
+                recyclerview    : "1.2.0-alpha05"
         ]
+        glide = '4.11.0'
+
         // api
         retrofit = '2.9.0'
         moshi = '1.9.3'
+        okhttp = '4.8.0'
 
         // database
         sqldelight = '1.4.2'

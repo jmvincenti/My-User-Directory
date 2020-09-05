@@ -11,6 +11,10 @@ CREATE TABLE DbUser (
         location TEXT AS DbLocation
 );
 
+deleteAll:
+DELETE
+FROM DbUser;
+
 insert:
 INSERT INTO DbUser
 VALUES ?;

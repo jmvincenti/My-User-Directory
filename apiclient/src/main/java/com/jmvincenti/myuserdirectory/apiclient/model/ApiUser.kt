@@ -22,8 +22,8 @@ data class ApiPicture(
 
 @JsonClass(generateAdapter = true)
 data class ApiId(
-    val name: String,
-    val value: String
+    val name: String?,
+    val value: String?
 )
 
 @JsonClass(generateAdapter = true)

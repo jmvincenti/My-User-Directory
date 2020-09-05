@@ -33,10 +33,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlin"
 
     //api
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
