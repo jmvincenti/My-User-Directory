@@ -15,5 +15,5 @@ class UserFullNameBuilder @Inject constructor(
         user.name.title,
         user.name.first,
         user.name.last
-    )
+    ).split(" ").joinToString(" ") { it.capitalize() }
 }
