@@ -1,0 +1,21 @@
+import com.jmvincenti.myuserdirectory.database.model.DbLocation;
+
+CREATE TABLE DbUser (
+        id TEXT NOT NULL,
+        position INTEGER NOT NULL,
+        fullName TEXT NOT NULL,
+        email TEXT,
+        phone TEXT,
+        thumbnail TEXT,
+        cover TEXT,
+        location TEXT AS DbLocation
+);
+
+insert:
+INSERT INTO DbUser
+VALUES ?;
+
+selectAll:
+SELECT *
+FROM DbUser
+ORDER BY position ASC;

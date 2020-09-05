@@ -1,0 +1,54 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        androidPluginVersion = '4.0.1'
+
+        //sdk and tools
+        compileSdkVersion = 29
+        minSdkVersion = 23
+        targetSdkVersion = 29
+
+        //dependencies
+        kotlin = '1.3.72'
+        // ui
+        androidx = [
+                core            : "1.3.1",
+                appcompat       : "1.2.0",
+                constraintlayout: "2.0.1",
+                lifecycle       : "2.2.0"
+        ]
+        // api
+        retrofit = '2.9.0'
+        moshi = '1.9.3'
+
+        // database
+        sqldelight = '1.4.2'
+
+        // di
+        hilt = '2.28-alpha'
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$androidPluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin"
+        classpath "com.squareup.sqldelight:gradle-plugin:$sqldelight"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
