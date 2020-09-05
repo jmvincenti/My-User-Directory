@@ -56,6 +56,9 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.androidx.constraintlayout"
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidx.lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidx.lifecycle"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.androidx.recyclerview"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
 
     // Di
     implementation "com.google.dagger:hilt-android:$rootProject.hilt"
