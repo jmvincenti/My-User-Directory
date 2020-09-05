@@ -1,3 +1,4 @@
+include ':statemachine'
 include ':database'
 include ':apiclient'
 include ':app'
