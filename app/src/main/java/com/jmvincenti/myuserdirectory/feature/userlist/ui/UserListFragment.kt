@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jmvincenti.myuserdirectory.databinding.UserListFragmentBinding
 import com.jmvincenti.myuserdirectory.feature.userlist.model.UserListCommand
 import com.jmvincenti.myuserdirectory.feature.userlist.model.UserListState
+import com.jmvincenti.myuserdirectory.feature.userlist.ui.widget.LoadCachedAdapter
+import com.jmvincenti.myuserdirectory.feature.userlist.ui.widget.LoadMoreAdapter
 import com.jmvincenti.myuserdirectory.feature.userlist.ui.widget.UserAdapter
+import com.jmvincenti.myuserdirectory.ui.widget.EndlessRecyclerViewScrollListener
 import com.jmvincenti.statemachine.SimpleLoadingState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -31,7 +36,9 @@ class UserListFragment : Fragment() {
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = UserAdapter()
+    private val userAdapter = UserAdapter()
+    private val loadCachedAdapter = LoadCachedAdapter()
+    private val loadMoreAdapter = LoadMoreAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,14 +54,36 @@ class UserListFragment : Fragment() {
             viewModel.onCommand(UserListCommand.RequestRetry)
         }
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                DividerItemDecoration.VERTICAL
+        binding.recyclerView.apply {
+            val layoutManager = LinearLayoutManager(context)
+
+            this.layoutManager = layoutManager
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
             )
-        )
-        binding.recyclerView.adapter = adapter
+            addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
+                override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                    viewModel.onCommand(UserListCommand.RequestLoadMore)
+                }
+            })
+
+            adapter = ConcatAdapter(
+                loadCachedAdapter,
+                userAdapter,
+                loadMoreAdapter
+            )
+        }
+
+        loadCachedAdapter.listener = {
+            viewModel.onCommand(UserListCommand.RequestRetry)
+        }
+
+        loadMoreAdapter.listener = {
+            viewModel.onCommand(UserListCommand.RequestRetryLoadMore)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -65,6 +94,11 @@ class UserListFragment : Fragment() {
 
     private var currentState: UserListState? = null
     private fun bind(state: UserListState) {
+
+        // Cached adapter
+        if (currentState?.loadInitialState != state.loadInitialState) {
+            loadCachedAdapter.state = state.loadInitialState
+        }
 
         // View animator
         val initialState = state.loadInitialState
@@ -89,7 +123,12 @@ class UserListFragment : Fragment() {
 
         // User list
         if (currentState?.userList != state.userList) {
-            adapter.items = state.userList
+            userAdapter.items = state.userList
+        }
+
+        // Load more
+        if (currentState?.loadMoreState != state.loadMoreState) {
+            loadMoreAdapter.state = state.loadMoreState
         }
 
         currentState = state
