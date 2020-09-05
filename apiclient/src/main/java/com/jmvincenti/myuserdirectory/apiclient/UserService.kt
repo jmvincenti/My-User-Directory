@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface UserService {
 
-    @GET
+    @GET("/api/1.0/")
     suspend fun getUsers(
         @Query("seed") seed: String,
         @Query("results") results: Int,
