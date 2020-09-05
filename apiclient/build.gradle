@@ -38,6 +38,10 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
 
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

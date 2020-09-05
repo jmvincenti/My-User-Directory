@@ -10,6 +10,7 @@ buildscript {
 
         //dependencies
         kotlin = '1.3.72'
+        coroutines = '1.3.7'
         // ui
         androidx = [
                 core            : "1.3.1",
