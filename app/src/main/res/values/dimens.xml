@@ -23,4 +23,5 @@
     <dimen name="font_size_extra_large">24sp</dimen>
 
     <dimen name="profile_image_size">40dp</dimen>
+    <dimen name="load_more_progressbar">30dp</dimen>
 </resources>
