@@ -77,6 +77,10 @@ class UserListFragment : Fragment() {
             )
         }
 
+        userAdapter.listener = {
+            // TODO open user details screen
+        }
+
         loadCachedAdapter.listener = {
             viewModel.onCommand(UserListCommand.RequestRetry)
         }

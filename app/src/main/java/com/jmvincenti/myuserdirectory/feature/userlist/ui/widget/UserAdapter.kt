@@ -15,8 +15,12 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         notifyDataSetChanged()
     }
 
+    var listener: ((User) -> Unit)? = null
+    private val _listener: ((User) -> Unit) = { listener?.invoke(it) }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = UserViewHolder(
-        UserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        UserListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        _listener
     )
 
     override fun getItemCount(): Int = items.size
@@ -26,10 +30,15 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     class UserViewHolder(
-        private val binding: UserListItemBinding
+        private val binding: UserListItemBinding,
+        private val listener: ((User) -> Unit)
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: User) {
+            binding.root.setOnClickListener {
+                listener(user)
+            }
+
             binding.userName.text = user.fullName
             binding.userSubtitle.text = user.email
 
