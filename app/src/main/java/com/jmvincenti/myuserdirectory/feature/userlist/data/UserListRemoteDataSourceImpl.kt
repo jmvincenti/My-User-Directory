@@ -10,9 +10,11 @@ import com.jmvincenti.myuserdirectory.feature.userlist.domain.UserListRemoteResu
 import com.jmvincenti.myuserdirectory.mapper.UserFullNameBuilder
 import com.jmvincenti.myuserdirectory.mapper.toModel
 import com.jmvincenti.statemachine.ErrorMessage
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class UserListRemoteDataSourceImpl(
-    private val context: Context,
+class UserListRemoteDataSourceImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val apiClient: UserApiClient,
     private val fullNameBuilder: UserFullNameBuilder
 ) : UserListRemoteDataSource {

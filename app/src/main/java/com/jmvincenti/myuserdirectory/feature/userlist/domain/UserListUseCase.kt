@@ -2,8 +2,9 @@ package com.jmvincenti.myuserdirectory.feature.userlist.domain
 
 import com.jmvincenti.myuserdirectory.feature.userlist.model.InitialUserListResult
 import com.jmvincenti.myuserdirectory.feature.userlist.model.MoreUserListResult
+import javax.inject.Inject
 
-class UserListUseCase(
+class UserListUseCase @Inject constructor(
     private val remoteDataSource: UserListRemoteDataSource,
     private val localDataSource: UserListLocalDataSource
 ) {

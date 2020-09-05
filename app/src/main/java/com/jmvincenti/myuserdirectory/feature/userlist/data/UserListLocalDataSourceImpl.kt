@@ -5,8 +5,9 @@ import com.jmvincenti.myuserdirectory.feature.userlist.domain.UserListLocalDataS
 import com.jmvincenti.myuserdirectory.mapper.toDb
 import com.jmvincenti.myuserdirectory.mapper.toModel
 import com.jmvincenti.myuserdirectory.model.User
+import javax.inject.Inject
 
-class UserListLocalDataSourceImpl(
+class UserListLocalDataSourceImpl @Inject constructor(
     private val database: UserDb
 ) : UserListLocalDataSource {
     override fun clear() {
