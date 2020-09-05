@@ -5,9 +5,10 @@ import com.jmvincenti.myuserdirectory.apiclient.model.ApiUser
 import com.jmvincenti.myuserdirectory.model.Location
 import com.jmvincenti.myuserdirectory.model.Pictures
 import com.jmvincenti.myuserdirectory.model.User
+import java.util.*
 
 fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
-    id = id.value,
+    id = email,
     fullName = fullNameBuilder.build(this),
     email = email,
     phone = phone,
