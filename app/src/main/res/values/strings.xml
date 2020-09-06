@@ -2,4 +2,8 @@
     <string name="app_name">My User Directory</string>
     <string name="generic_error">Oops, something went wrong</string>
     <string name="data_loading_error_button">Try again</string>
+    <string name="user_location_street">Street</string>
+    <string name="user_location_city">City</string>
+    <string name="user_location_state">State</string>
+    <string name="user_location_postcode">Postcode</string>
 </resources>
