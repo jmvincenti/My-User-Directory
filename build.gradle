@@ -20,6 +20,8 @@ buildscript {
                 recyclerview    : "1.2.0-alpha05"
         ]
         glide = '4.11.0'
+        glideTransormation = '4.0.0'
+        material = '1.2.0'
 
         // api
         retrofit = '2.9.0'

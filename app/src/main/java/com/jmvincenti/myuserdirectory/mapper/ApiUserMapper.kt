@@ -5,7 +5,6 @@ import com.jmvincenti.myuserdirectory.apiclient.model.ApiUser
 import com.jmvincenti.myuserdirectory.model.Location
 import com.jmvincenti.myuserdirectory.model.Pictures
 import com.jmvincenti.myuserdirectory.model.User
-import java.util.*
 
 fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
     id = email,
@@ -23,5 +22,6 @@ fun ApiLocation.toModel(): Location = Location(
     street = street,
     state = state,
     city = city,
-    postcode = postcode
+    postcode = postcode,
+    coordinate = null //TODO
 )

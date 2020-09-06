@@ -22,7 +22,8 @@ fun DbLocation.toModel(): Location = Location(
     street = street,
     state = state,
     city = city,
-    postcode = postcode
+    postcode = postcode,
+    coordinate = null //TODO
 )
 
 fun User.toDb(position: Int): DbUser = DbUser(
