@@ -9,7 +9,7 @@
         android:id="@+id/user_location_image"
         android:layout_width="@dimen/user_location_width"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginStart="@dimen/spacing_large"
         app:layout_constraintBottom_toBottomOf="@id/user_location_postcode_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/user_location_street_title" />

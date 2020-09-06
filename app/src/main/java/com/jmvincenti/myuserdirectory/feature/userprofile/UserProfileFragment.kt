@@ -16,10 +16,13 @@ import com.jmvincenti.myuserdirectory.databinding.UserProfileFragmentBinding
 import com.jmvincenti.myuserdirectory.feature.userprofile.domain.CoordinateImageBuilder
 import com.jmvincenti.myuserdirectory.feature.userprofile.model.UserProfileCommand
 import com.jmvincenti.myuserdirectory.feature.userprofile.model.UserProfileState
+import com.jmvincenti.myuserdirectory.feature.userprofile.ui.GenericAdapter
 import com.jmvincenti.myuserdirectory.feature.userprofile.ui.LocationAdapter
 import com.jmvincenti.myuserdirectory.feature.userprofile.ui.UserProfileCardAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.glide.transformations.BlurTransformation
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 private const val PARAM_USER_ID = "Param:userId"
@@ -53,6 +56,11 @@ class UserProfileFragment : Fragment() {
 
     private lateinit var cardAdapter: UserProfileCardAdapter
     private lateinit var locationAdapter: LocationAdapter
+    private lateinit var phoneAdapter: GenericAdapter
+    private lateinit var cellAdapter: GenericAdapter
+    private lateinit var dobAdapter: GenericAdapter
+
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +80,18 @@ class UserProfileFragment : Fragment() {
 
         cardAdapter = UserProfileCardAdapter()
         locationAdapter = LocationAdapter(coordinateImageBuilder)
+        phoneAdapter = GenericAdapter(
+            iconRes = R.drawable.ic_baseline_local_phone_24,
+            title = R.string.user_phone
+        )
+        cellAdapter = GenericAdapter(
+            iconRes = R.drawable.ic_baseline_phone_android_24,
+            title = R.string.user_cell
+        )
+        dobAdapter = GenericAdapter(
+            iconRes = R.drawable.ic_baseline_calendar_today_24,
+            title = R.string.user_dob
+        )
 
         binding.recyclerView.apply {
             val layoutManager = LinearLayoutManager(context)
@@ -86,6 +106,9 @@ class UserProfileFragment : Fragment() {
 
             adapter = ConcatAdapter(
                 cardAdapter,
+                phoneAdapter,
+                cellAdapter,
+                dobAdapter,
                 locationAdapter
             )
         }
@@ -105,6 +128,9 @@ class UserProfileFragment : Fragment() {
             ?: return
 
         cardAdapter.user = user
+        phoneAdapter.value = user.phone
+        cellAdapter.value = user.cell
+        dobAdapter.value = user.dob?.let { dateFormat.format(it) }
         locationAdapter.location = user.location
 
         Glide.with(requireContext())

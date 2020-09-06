@@ -15,7 +15,9 @@ fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
         thumbnail = picture.thumbnail,
         cover = picture.large
     ),
-    location = location.toModel()
+    location = location.toModel(),
+    cell = null, //TODO
+    dob = null, //TODO
 )
 
 fun ApiLocation.toModel(): Location = Location(

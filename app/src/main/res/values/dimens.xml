@@ -32,5 +32,7 @@
     <dimen name="user_profile_card_elevation">3dp</dimen>
     <dimen name="user_profile_profile_elevation">6dp</dimen>
 
-    <dimen name="user_location_width">150dp</dimen>
+    <dimen name="user_location_width">100dp</dimen>
+
+    <dimen name="user_generic_image">25dp</dimen>
 </resources>

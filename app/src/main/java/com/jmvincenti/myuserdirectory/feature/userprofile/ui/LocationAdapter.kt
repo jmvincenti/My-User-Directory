@@ -47,9 +47,10 @@ class LocationAdapter(
             binding.userLocationPostcodeValue.text = location.postcode.capitalize()
 
             when (location.coordinate) {
-                null -> binding.userLocationImage.visibility = View.GONE
+                null -> {
+                    binding.userLocationImage.setImageResource(R.drawable.ic_baseline_map_24)
+                }
                 else -> {
-                    binding.userLocationImage.visibility = View.VISIBLE
                     Glide.with(binding.root.context)
                         .load(coordinateImageBuilder.build(coordinate = location.coordinate))
                         .placeholder(R.drawable.ic_baseline_map_24)
