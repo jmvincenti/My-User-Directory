@@ -130,7 +130,7 @@ class UserProfileFragment : Fragment() {
         cardAdapter.user = user
         phoneAdapter.value = user.phone
         cellAdapter.value = user.cell
-        dobAdapter.value = user.dob?.let { dateFormat.format(it) }
+        dobAdapter.value = user.dob?.let { dateFormat.format(Date(it)) }
         locationAdapter.location = user.location
 
         Glide.with(requireContext())

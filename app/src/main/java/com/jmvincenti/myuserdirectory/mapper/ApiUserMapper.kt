@@ -1,7 +1,9 @@
 package com.jmvincenti.myuserdirectory.mapper
 
+import com.jmvincenti.myuserdirectory.apiclient.model.ApiCoordinate
 import com.jmvincenti.myuserdirectory.apiclient.model.ApiLocation
 import com.jmvincenti.myuserdirectory.apiclient.model.ApiUser
+import com.jmvincenti.myuserdirectory.model.Coordinate
 import com.jmvincenti.myuserdirectory.model.Location
 import com.jmvincenti.myuserdirectory.model.Pictures
 import com.jmvincenti.myuserdirectory.model.User
@@ -16,8 +18,8 @@ fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
         cover = picture.large
     ),
     location = location.toModel(),
-    cell = null, //TODO
-    dob = null, //TODO
+    cell = cell,
+    dob = dob
 )
 
 fun ApiLocation.toModel(): Location = Location(
@@ -25,5 +27,10 @@ fun ApiLocation.toModel(): Location = Location(
     state = state,
     city = city,
     postcode = postcode,
-    coordinate = null //TODO
+    coordinate = coordinates?.toModel()
+)
+
+fun ApiCoordinate.toModel(): Coordinate = Coordinate(
+    lat = latitude,
+    long = longitude
 )

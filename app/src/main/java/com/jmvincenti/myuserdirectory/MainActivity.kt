@@ -2,6 +2,7 @@ package com.jmvincenti.myuserdirectory
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.jmvincenti.myuserdirectory.feature.userlist.ui.UserListFragment
 import com.jmvincenti.myuserdirectory.feature.userprofile.UserProfileFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.container,
-                    UserProfileFragment.newInstance("felix.harris@example.com")
+                    UserListFragment.newInstance() //"felix.harris@example.com"
                 )
                 .commitNow()
         }
