@@ -23,3 +23,9 @@ selectAll:
 SELECT *
 FROM DbUser
 ORDER BY position ASC;
+
+selectById:
+SELECT *
+FROM DbUser
+WHERE DbUser.id = :userId
+ORDER BY position ASC;
