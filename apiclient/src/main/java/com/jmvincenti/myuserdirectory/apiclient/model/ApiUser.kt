@@ -1,6 +1,7 @@
 package com.jmvincenti.myuserdirectory.apiclient.model
 
 import com.squareup.moshi.JsonClass
+import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class ApiUser(
@@ -10,7 +11,7 @@ data class ApiUser(
     val email: String,
     val phone: String,
     val cell: String,
-    val dob: Long,
+    val dob: ApiDob?,
     val picture: ApiPicture,
     val nat: String,
     val location: ApiLocation,
@@ -48,4 +49,9 @@ data class ApiLocation(
 data class ApiCoordinate(
     val latitude: String,
     val longitude: String
+)
+
+@JsonClass(generateAdapter = true)
+data class ApiDob(
+    val date: Date
 )

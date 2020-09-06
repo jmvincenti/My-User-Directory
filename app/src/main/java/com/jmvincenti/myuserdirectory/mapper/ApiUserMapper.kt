@@ -19,7 +19,7 @@ fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
     ),
     location = location.toModel(),
     cell = cell,
-    dob = dob
+    dob = dob?.date?.time
 )
 
 fun ApiLocation.toModel(): Location = Location(
