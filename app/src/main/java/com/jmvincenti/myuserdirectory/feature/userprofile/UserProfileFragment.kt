@@ -78,6 +78,13 @@ class UserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.toolbar.apply {
+            setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+            setNavigationOnClickListener {
+                requireActivity().onBackPressed()
+            }
+        }
+
         cardAdapter = UserProfileCardAdapter()
         locationAdapter = LocationAdapter(coordinateImageBuilder)
         phoneAdapter = GenericAdapter(
