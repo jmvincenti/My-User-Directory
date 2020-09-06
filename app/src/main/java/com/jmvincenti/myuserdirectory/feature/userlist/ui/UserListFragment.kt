@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jmvincenti.myuserdirectory.MainActivity
 import com.jmvincenti.myuserdirectory.databinding.UserListFragmentBinding
 import com.jmvincenti.myuserdirectory.feature.userlist.model.UserListCommand
 import com.jmvincenti.myuserdirectory.feature.userlist.model.UserListState
@@ -78,7 +79,7 @@ class UserListFragment : Fragment() {
         }
 
         userAdapter.listener = {
-            // TODO open user details screen
+            (requireActivity() as MainActivity).onUserSelected(it)
         }
 
         loadCachedAdapter.listener = {

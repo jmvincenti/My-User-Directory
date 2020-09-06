@@ -20,4 +20,18 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TextAppearance.User.Detail" />
+
+    <style name="TextAppearance.User.Detail.Title">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/la_text_hint</item>
+    </style>
+
+    <style name="TextAppearance.User.Detail.Value">
+        <item name="android:textSize">@dimen/font_size_medium</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
 </resources>

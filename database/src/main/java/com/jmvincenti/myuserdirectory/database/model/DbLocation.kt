@@ -7,5 +7,7 @@ data class DbLocation(
     val street: String,
     val city: String,
     val state: String,
-    val postcode: String
+    val postcode: String,
+    val lat: String?,
+    val long: String?
 )

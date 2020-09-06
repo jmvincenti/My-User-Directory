@@ -1,11 +1,12 @@
 package com.jmvincenti.myuserdirectory.mapper
 
+import com.jmvincenti.myuserdirectory.apiclient.model.ApiCoordinate
 import com.jmvincenti.myuserdirectory.apiclient.model.ApiLocation
 import com.jmvincenti.myuserdirectory.apiclient.model.ApiUser
+import com.jmvincenti.myuserdirectory.model.Coordinate
 import com.jmvincenti.myuserdirectory.model.Location
 import com.jmvincenti.myuserdirectory.model.Pictures
 import com.jmvincenti.myuserdirectory.model.User
-import java.util.*
 
 fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
     id = email,
@@ -16,12 +17,20 @@ fun ApiUser.toModel(fullNameBuilder: UserFullNameBuilder): User = User(
         thumbnail = picture.thumbnail,
         cover = picture.large
     ),
-    location = location.toModel()
+    location = location.toModel(),
+    cell = cell,
+    dob = dob?.date?.time
 )
 
 fun ApiLocation.toModel(): Location = Location(
     street = street,
     state = state,
     city = city,
-    postcode = postcode
+    postcode = postcode,
+    coordinate = coordinates?.toModel()
+)
+
+fun ApiCoordinate.toModel(): Coordinate = Coordinate(
+    lat = latitude,
+    long = longitude
 )

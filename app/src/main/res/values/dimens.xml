@@ -24,4 +24,15 @@
 
     <dimen name="profile_image_size">40dp</dimen>
     <dimen name="load_more_progressbar">30dp</dimen>
+
+    <dimen name="user_profile_cover_height">250dp</dimen>
+    <dimen name="user_profile_thumbnail">48dp</dimen>
+    <dimen name="user_profile_card_padding_top">24dp</dimen>
+    <dimen name="user_profile_overlap">80dp</dimen>
+    <dimen name="user_profile_card_elevation">3dp</dimen>
+    <dimen name="user_profile_profile_elevation">6dp</dimen>
+
+    <dimen name="user_location_width">100dp</dimen>
+
+    <dimen name="user_generic_image">25dp</dimen>
 </resources>

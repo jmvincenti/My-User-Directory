@@ -38,6 +38,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
+    implementation "com.squareup.moshi:moshi-adapters:$rootProject.moshi"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"

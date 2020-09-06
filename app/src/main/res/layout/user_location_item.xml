@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/user_location_image"
+        android:layout_width="@dimen/user_location_width"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing_large"
+        app:layout_constraintBottom_toBottomOf="@id/user_location_postcode_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/user_location_street_title" />
+
+    <TextView
+        android:id="@+id/user_location_street_title"
+        style="@style/TextAppearance.User.Detail.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/user_location_street"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_goneMarginStart="@dimen/spacing_large" />
+
+    <TextView
+        android:id="@+id/user_location_street_value"
+        style="@style/TextAppearance.User.Detail.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_street_title"
+        app:layout_goneMarginStart="@dimen/spacing_large"
+        tools:text="1 avenue Jean Jaurès" />
+
+    <TextView
+        android:id="@+id/user_location_city_title"
+        style="@style/TextAppearance.User.Detail.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/user_location_city"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_street_value"
+        app:layout_goneMarginStart="@dimen/spacing_large" />
+
+    <TextView
+        android:id="@+id/user_location_city_value"
+        style="@style/TextAppearance.User.Detail.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_city_title"
+        app:layout_goneMarginStart="@dimen/spacing_large"
+        tools:text="Lyon" />
+
+    <TextView
+        android:id="@+id/user_location_state_title"
+        style="@style/TextAppearance.User.Detail.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/user_location_state"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_city_value"
+        app:layout_goneMarginStart="@dimen/spacing_large" />
+
+    <TextView
+        android:id="@+id/user_location_state_value"
+        style="@style/TextAppearance.User.Detail.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_state_title"
+        app:layout_goneMarginStart="@dimen/spacing_large"
+        tools:text="-" />
+
+    <TextView
+        android:id="@+id/user_location_postcode_title"
+        style="@style/TextAppearance.User.Detail.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:text="@string/user_location_postcode"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_state_value"
+        app:layout_goneMarginStart="@dimen/spacing_large" />
+
+    <TextView
+        android:id="@+id/user_location_postcode_value"
+        style="@style/TextAppearance.User.Detail.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        app:layout_constraintStart_toEndOf="@id/user_location_image"
+        app:layout_constraintTop_toBottomOf="@id/user_location_postcode_title"
+        app:layout_goneMarginStart="@dimen/spacing_large"
+        tools:text="69007" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

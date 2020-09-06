@@ -6,6 +6,8 @@ CREATE TABLE DbUser (
         fullName TEXT NOT NULL,
         email TEXT,
         phone TEXT,
+        cell TEXT,
+        dob INTEGER,
         thumbnail TEXT,
         cover TEXT,
         location TEXT AS DbLocation
@@ -22,4 +24,10 @@ VALUES ?;
 selectAll:
 SELECT *
 FROM DbUser
+ORDER BY position ASC;
+
+selectById:
+SELECT *
+FROM DbUser
+WHERE DbUser.id = :userId
 ORDER BY position ASC;
