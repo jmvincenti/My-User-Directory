@@ -2,6 +2,7 @@ package com.jmvincenti.myuserdirectory.mapper
 
 import com.jmvincenti.myuserdirectory.database.model.DbLocation
 import com.jmvincenti.myuserdirectory.database.model.DbUser
+import com.jmvincenti.myuserdirectory.model.Coordinate
 import com.jmvincenti.myuserdirectory.model.Location
 import com.jmvincenti.myuserdirectory.model.Pictures
 import com.jmvincenti.myuserdirectory.model.User
@@ -11,8 +12,8 @@ fun DbUser.toModel(): User = User(
     fullName = fullName,
     email = email,
     phone = phone,
-    cell = null, //TODO
-    dob = null, //TODO
+    cell = cell,
+    dob = dob,
     pictures = Pictures(
         thumbnail = thumbnail,
         cover = cover
@@ -25,7 +26,13 @@ fun DbLocation.toModel(): Location = Location(
     state = state,
     city = city,
     postcode = postcode,
-    coordinate = null //TODO
+    coordinate = when {
+        lat.isNullOrBlank() || long.isNullOrBlank() -> null
+        else -> Coordinate(
+            lat = lat!!,
+            long = long!!
+        )
+    }
 )
 
 fun User.toDb(position: Int): DbUser = DbUser(
@@ -33,6 +40,8 @@ fun User.toDb(position: Int): DbUser = DbUser(
     fullName = fullName,
     email = email,
     phone = phone,
+    cell = cell,
+    dob = dob,
     thumbnail = pictures?.thumbnail,
     cover = pictures?.cover,
     location = location?.toDb(),
@@ -43,5 +52,7 @@ fun Location.toDb(): DbLocation = DbLocation(
     street = street,
     state = state,
     city = city,
-    postcode = postcode
+    postcode = postcode,
+    lat = coordinate?.lat,
+    long = coordinate?.long
 )

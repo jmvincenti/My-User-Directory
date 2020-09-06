@@ -6,6 +6,8 @@ CREATE TABLE DbUser (
         fullName TEXT NOT NULL,
         email TEXT,
         phone TEXT,
+        cell TEXT,
+        dob INTEGER,
         thumbnail TEXT,
         cover TEXT,
         location TEXT AS DbLocation
