@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        androidPluginVersion = '4.0.1'
+        androidPluginVersion = '4.1.1'
 
         //sdk and tools
         compileSdkVersion = 29

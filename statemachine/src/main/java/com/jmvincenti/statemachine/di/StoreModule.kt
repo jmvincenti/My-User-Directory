@@ -1,17 +1,18 @@
-package com.jmvincenti.myuserdirectory.feature.userlist.di
+package com.jmvincenti.statemachine.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.ApplicationComponent
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(ApplicationComponent::class)
 object StoreModule {
 
     @Provides
+    @Singleton
     fun provideExecutor(): Executor = Executors.newSingleThreadExecutor()
 }

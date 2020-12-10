@@ -1,7 +1,5 @@
 package com.jmvincenti.myuserdirectory.model
 
-import java.util.*
-
 data class User(
     val id: String,
     val fullName: String,

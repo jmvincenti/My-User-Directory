@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,18 +44,16 @@ class UserProfileFragment : Fragment() {
 
     private lateinit var userId: String
 
-    @Inject
-    lateinit var coordinateImageBuilder: CoordinateImageBuilder
-
-    @Inject
-    lateinit var factory: UserProfileViewModel.Factory
-    private lateinit var viewModel: UserProfileViewModel
+    private val viewModel: UserProfileViewModel by activityViewModels()
 
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var cardAdapter: UserProfileCardAdapter
-    private lateinit var locationAdapter: LocationAdapter
+    @Inject
+    lateinit var cardAdapter: UserProfileCardAdapter
+    @Inject
+    lateinit var locationAdapter: LocationAdapter
+
     private lateinit var phoneAdapter: GenericAdapter
     private lateinit var cellAdapter: GenericAdapter
     private lateinit var dobAdapter: GenericAdapter
@@ -85,8 +83,6 @@ class UserProfileFragment : Fragment() {
             }
         }
 
-        cardAdapter = UserProfileCardAdapter()
-        locationAdapter = LocationAdapter(coordinateImageBuilder)
         phoneAdapter = GenericAdapter(
             iconRes = R.drawable.ic_baseline_local_phone_24,
             title = R.string.user_phone
@@ -123,8 +119,6 @@ class UserProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), factory)
-            .get(UserProfileViewModel::class.java)
 
         viewModel.state().observe(viewLifecycleOwner, this@UserProfileFragment::bind)
         viewModel.onCommand(UserProfileCommand.Init(userId))
