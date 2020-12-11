@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jmvincenti.myuserdirectory.databinding.LoadCachedViewBinding
 import com.jmvincenti.statemachine.SimpleLoadingState
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class LoadCachedAdapter : RecyclerView.Adapter<LoadCachedAdapter.LoadCachedHolder>() {
+class LoadCachedAdapter @Inject constructor() :
+    RecyclerView.Adapter<LoadCachedAdapter.LoadCachedHolder>() {
 
     var state: SimpleLoadingState
             by Delegates.observable(SimpleLoadingState.Idle as SimpleLoadingState) { _, _, _ ->

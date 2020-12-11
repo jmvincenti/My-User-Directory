@@ -26,6 +26,15 @@ android {
             minifyEnabled true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -35,10 +44,10 @@ dependencies {
     //api
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
-    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit"
+    api "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi"
-    implementation "com.squareup.moshi:moshi-adapters:$rootProject.moshi"
+    api "com.squareup.moshi:moshi-adapters:$rootProject.moshi"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
@@ -48,4 +57,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // Di
+    implementation "com.google.dagger:hilt-android:$rootProject.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
+    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 }

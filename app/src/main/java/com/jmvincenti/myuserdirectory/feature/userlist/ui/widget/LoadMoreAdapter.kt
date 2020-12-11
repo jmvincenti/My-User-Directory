@@ -4,10 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jmvincenti.myuserdirectory.databinding.LoadMoreViewBinding
+import com.jmvincenti.myuserdirectory.feature.userprofile.domain.CoordinateImageBuilder
 import com.jmvincenti.statemachine.SimpleLoadingState
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class LoadMoreAdapter : RecyclerView.Adapter<LoadMoreAdapter.LoadMoreHolder>() {
+class LoadMoreAdapter @Inject constructor(
+    val builder : CoordinateImageBuilder
+) :
+    RecyclerView.Adapter<LoadMoreAdapter.LoadMoreHolder>() {
 
     var state: SimpleLoadingState
             by Delegates.observable(SimpleLoadingState.Idle as SimpleLoadingState) { _, _, _ ->

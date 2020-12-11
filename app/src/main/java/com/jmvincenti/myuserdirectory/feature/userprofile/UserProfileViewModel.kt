@@ -1,5 +1,6 @@
 package com.jmvincenti.myuserdirectory.feature.userprofile
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +12,7 @@ import com.jmvincenti.myuserdirectory.feature.userprofile.store.UserProfileStore
 import java.util.concurrent.Executor
 import javax.inject.Inject
 
-class UserProfileViewModel(
+class UserProfileViewModel @ViewModelInject constructor(
     useCase: UserProfileUseCase,
     executor: Executor
 ) : ViewModel() {
@@ -26,14 +27,5 @@ class UserProfileViewModel(
 
     fun onCommand(command: UserProfileCommand) {
         store.dispatch(command)
-    }
-
-    class Factory @Inject constructor(
-        private val useCase: UserProfileUseCase,
-        private val executor: Executor
-    ) : ViewModelProvider.Factory {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-            UserProfileViewModel(useCase, executor) as T
     }
 }

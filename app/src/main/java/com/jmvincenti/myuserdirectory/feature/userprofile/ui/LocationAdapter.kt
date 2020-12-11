@@ -1,7 +1,6 @@
 package com.jmvincenti.myuserdirectory.feature.userprofile.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -9,9 +8,10 @@ import com.jmvincenti.myuserdirectory.R
 import com.jmvincenti.myuserdirectory.databinding.UserLocationItemBinding
 import com.jmvincenti.myuserdirectory.feature.userprofile.domain.CoordinateImageBuilder
 import com.jmvincenti.myuserdirectory.model.Location
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class LocationAdapter(
+class LocationAdapter @Inject constructor(
     private val coordinateImageBuilder: CoordinateImageBuilder
 ) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 

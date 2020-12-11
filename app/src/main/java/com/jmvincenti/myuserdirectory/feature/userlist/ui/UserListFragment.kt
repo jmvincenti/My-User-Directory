@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,16 +30,17 @@ class UserListFragment : Fragment() {
         fun newInstance() = UserListFragment()
     }
 
-    @Inject
-    lateinit var factory: UserListViewModel.Factory
-    private lateinit var viewModel: UserListViewModel
-
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val userAdapter = UserAdapter()
-    private val loadCachedAdapter = LoadCachedAdapter()
-    private val loadMoreAdapter = LoadMoreAdapter()
+    private val viewModel: UserListViewModel by activityViewModels()
+
+    @Inject
+    lateinit var userAdapter: UserAdapter
+    @Inject
+    lateinit var loadCachedAdapter: LoadCachedAdapter
+    @Inject
+    lateinit var loadMoreAdapter: LoadMoreAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -93,7 +94,7 @@ class UserListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), factory).get(UserListViewModel::class.java)
+
         viewModel.state().observe(viewLifecycleOwner, Observer(this@UserListFragment::bind))
     }
 

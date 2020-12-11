@@ -7,9 +7,11 @@ import com.bumptech.glide.Glide
 import com.jmvincenti.myuserdirectory.R
 import com.jmvincenti.myuserdirectory.databinding.UserProfileCardBinding
 import com.jmvincenti.myuserdirectory.model.User
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class UserProfileCardAdapter : RecyclerView.Adapter<UserProfileCardAdapter.CardViewHolder>() {
+class UserProfileCardAdapter @Inject constructor() :
+    RecyclerView.Adapter<UserProfileCardAdapter.CardViewHolder>() {
 
     var user: User? by Delegates.observable(null as User?) { _, _, _ ->
         notifyDataSetChanged()

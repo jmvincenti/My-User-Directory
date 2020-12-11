@@ -7,9 +7,10 @@ import com.bumptech.glide.Glide
 import com.jmvincenti.myuserdirectory.R
 import com.jmvincenti.myuserdirectory.databinding.UserListItemBinding
 import com.jmvincenti.myuserdirectory.model.User
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter @Inject constructor() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     var items: List<User> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
